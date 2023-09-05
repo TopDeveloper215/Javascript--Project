@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Video Renegade Downloader</title>
+    <link  href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="popup.js"></script>
+</head>
+<body style="width: 400px;">
+
+<div class="login-wrap before-login">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+        <!--<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Forgot Password</label>-->
+        <div class="login-form">
+            <!--<div class="sign-in-htm">-->
+            <span id="error_msg"></span>
+            <form id="login-form">
+                <div class="group">
+                    <label for="user" class="label">Username or Email</label>
+                    <input id="user" name="email" type="email" class="input">
+                </div>
+                <div class="group">
+                    <label for="pass" class="label">Password</label>
+                    <input id="pass" name="password" type="password" class="input" data-type="password">
+                </div>
+                <div class="group">
+                    <input type="submit" id="sign_in" class="button" value="Sign In">
+                </div>
+                <div class="group text-center">
+                    <a class="forgotten-pass" target="_blank" href="https://download.mlmrenegade.com/password/reset">Forgotten password?</a>
+                </div>
+            </form>
+            <div class="hr"></div>
+            <div class="text-center">
+                <a class="btn btn-light btn-sm" href="http://www.videorenegadedownloader.com/" target="_blank">Register</a>
+                <a class="btn btn-light btn-sm" href="mailto:support@mlmrenegade.com" target="_blank">Contact Support</a>
+            </div>
+            <!--</div>-->
+            <!--<div class="for-pwd-htm">-->
+                <!--<div class="group">-->
+                    <!--<label for="user" class="label">Username or Email</label>-->
+                    <!--<input id="user" type="text" class="input">-->
+                <!--</div>-->
+                <!--<div class="group">-->
+                    <!--<input type="submit" class="button" value="Reset Password">-->
+                <!--</div>-->
+                <!--<div class="hr"></div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+<div class="main-content after-login">
+    <div class="container mt-7">
+        <!-- Table -->
+        <div class="row">
+            <div class="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
+                <div class="card card-profile shadow">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+                            <div class="card-profile-image">
+                                <a href="#">
+                                    <img src="" id="profile_image" class="rounded-circle">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                        <div class="d-flex justify-content-between">
+                            <a href="http://download.mlmrenegade.com" target="_blank" class="btn btn-sm btn-default float-right">website</a>
+                            <a href="#" id="user_logout" class="btn btn-sm btn-info mr-4">Logout</a>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 pt-md-4">
+                        <!--<div class="row">-->
+                            <!--<div class="col">-->
+                                <!--<div class="card-profile-stats d-flex justify-content-center mt-md-5">-->
+                                    <!--<div>-->
+                                        <!--<span class="heading">Name</span>-->
+                                        <!--<span class="description" id="user_name" ></span>-->
+                                    <!--</div>-->
+                                    <!--<div>-->
+                                        <!--<span class="heading">Email</span>-->
+                                        <!--<span class="description" id="user_email">Photos</span>-->
+                                    <!--</div>-->
+                                    <!--<div>-->
+                                        <!--<span class="heading">89</span>-->
+                                        <!--<span class="description">Comments</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="text-center">
+                            <h3>
+                                <span id="user_name"></span>
+                            </h3>
+                            <div class="h5 font-weight-300" >
+                                <i class="ni location_pin mr-2"></i><span id="user_email"></span>
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>Download Wistia, Vimeo, & Facebook videos
+                            </div>
+                            <div>
+                                <i class="ni education_hat mr-2"></i>
+                            </div>
+                            <hr class="my-4">
+                            <div class="text-center">
+                                <a class="btn btn-light btn-sm" href="mailto:support@mlmrenegade.com" target="_blank">Contact Support</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,375 @@
+@font-face {
+  font-family: Poppins;
+  src: url('../font/Poppins-SemiBold.ttf');
+}
+
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin: 0;
+    font-family: Poppins;
+    overflow: hidden;
+}
+
+html, body { width:100%; height:100%;}
+
+.loader{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color:white;
+  position: absolute;
+}
+
+.loader>div{
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  border: 7px solid white;
+  border-top-color: black;
+  border-bottom-color: black;
+  margin:auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+
+.menuGroup-wall{
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  display: none;
+}
+
+.wallTypes{
+  display: flex;
+  height: inherit;
+}
+
+/**  Canvas Styles  **/
+.canvas-wrap {
+    /* z-index: 0; */
+    display: flex;
+    height: 100vh;
+}
+#canvas-container {
+    /* z-index: 1; */
+    display: none;
+    margin: auto;
+}
+.canvas-container {
+    margin: 0 auto;
+}
+
+
+#artHere{
+    display: none;
+}
+
+canvas {
+    display:block;
+}
+
+
+/* input[type="color"]:first-child {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  
+  background: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 10px;
+}
+
+input[type="color"]:nth-child(2) {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+
+  outline: none;
+}
+
+input[type="color" i] {
+  border-radius: 10px;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: block;
+} */
+
+input[type="file"] {
+  display: none;
+} 
+
+
+/* menu left  */
+ #menuGroup-left-wall{
+    display: none;
+    border-radius: 10px;
+    justify-content: space-between;
+    position: absolute;
+    padding: 10px;
+    bottom: 20px;
+    z-index: 2;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
+    left: 20px;
+  }
+
+#menuGroup-left-artwork{
+  display: none;
+  border-radius: 10px;
+  justify-content: space-between;
+  position: absolute;
+  padding: 10px;
+  bottom: 20px;
+  left: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* .size-inputs{
+  margin-left: 10px;
+}
+
+#height-input{
+  border-radius: 10px;
+  padding: 10px;
+  width: 100px;
+}
+
+#width-input{
+  border-radius: 10px;
+  padding: 10px;
+  width: 100px;
+} */
+
+.menuGroup-right{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+}
+
+#uploadImg{
+    display: none;
+}
+
+.form-control{
+  margin: 2px;
+}
+
+/* wall type menu */
+.wall-type-menu{
+  width: 100%;
+  height: 0;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.2s;
+  /* padding-top: 60px; */
+  display: flex;
+}
+
+.wall-type-menu a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.1s;
+}
+
+.wall-type-menu a:hover {
+  color: #f1f1f1;
+}
+
+.wall-type-menu .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.wallBtn {
+  margin-left: 20px;
+}
+
+.wallBtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.2s;
+    padding-top: 60px;
+  }
+
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.1s;
+  }
+
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .openbtn {
+    cursor: pointer;
+    color: white;
+    position: fixed;
+    right: 20px;
+    top: 10px;
+  }
+
+  .openbtn:hover {
+    background-color: #444;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+
+  /* .open-sidebar {
+    position: fixed;
+  } */
+
+  #backbtn{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    background-color: black;
+  }
+
+  #backbtn a{
+    text-decoration: none;
+    color: white;
+  }
+
+  #addBtn{
+    height: 50px;
+    background-color: black;
+    outline: none;
+    border: none;
+    z-index: 2;
+  }
+
+  /* .vcolorful{
+    display: none;
+  } */
+
+  .button-group1{
+    border-radius: 10px;
+    position: absolute;
+    padding: 10px;
+    bottom: 100px;
+    left: 200px; 
+  }
+
+  .button-group2{
+    border-radius: 10px;
+    position: absolute;
+    padding: 10px;
+    bottom: 30px;
+    left: 200px; 
+    display: inline;
+  }
+
+  .frame2, .frame-group, .wid, .high, .innerframe-group{
+    display: inline;
+  }
+  .frame2{
+    padding: 10px;
+  }
+
+  .wid, .high{
+    width: 100px;
+  }
+
+  .select{
+    padding: 6px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+  }
+
+ .pattern, .innerpattern{
+  width: 50px;
+  height: 50px;
+  display: none;
+  border: 1px solid black;
+ }
+
+
+ .dimen {
+  width: 110px;
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid black;
+  font-size: 16px;
+  margin-right: 3px;
+ }
+.validation, .dismiss{
+  display: none;
+}
+.dimen{
+  border: 3px solid black!important;
+}
+#p1, #ip1{
+  border: 5px solid black;
+}
+#inner {
+  display: none;
+}
+#ip6{
+  margin-top: 50px;
+  height: 25px!important;
+}

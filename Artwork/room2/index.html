@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>living-room-with-plant_12345</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="../global-css/css/styles.css" />
+    <!-- <link rel="stylesheet" href="../global-css/css/bootstrap_min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> 
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+<body onclick="deselectall(event)">
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div></div>
+    </div>
+
+    <!-- Sidebar -->
+    <button class="btn" id="backbtn"><a href="http://artlyss.com/browse-rooms/">Back</a></button> 
+    <button class="btn btn-dark openbtn" onclick="openNav()">☰</button>  
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#" onclick="takeScreenshot()">Download</a>
+        <a href="#">Crop</a>
+        <a href="#">Pricing</a>
+        <a href="#">Next Room</a>
+        <a href="http://artlyss.com">Exit</a>
+    </div>
+
+    <!-- <div id="canvas-container" class="canvas-container" style="width: 1250px">
+        <canvas id="canvas"></canvas>
+    </div> -->
+
+    <div class="canvas-wrap">
+        <div id="canvas-container">
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+    
+    <!-- Left menu group -->
+    <div id="menuGroup-left-wall">
+        <hex-color-picker class="vcolorful" id="vcolorful" color="#e8e8e8"></hex-color-picker>
+    </div>
+
+    <div id="menuGroup-left-artwork">
+        <button id="deleteBtn" type="button" class="btn btn-dark" onclick="deleteSelected()">Delete Artwork</button>
+    </div>
+
+    <!-- input artwork -->
+    <input type="file" id="uploadImg" accept="image/png, image/gif, image/jpeg"  onchange="handleUpload(event)"/>
+   <!-- <div id="dms" data-bs-toggle="modal" data-bs-target="#myModal"></div> -->
+
+    
+    <!-- right menu group -->
+    <div class="menuGroup-right">
+        <button id="addBtn" type="button" class="btn btn-dark" onclick="addArtwork()">Add Artwork</button>
+    </div>
+
+
+
+     <!-- frame button group -->
+    <div style="display: none;" class="objectselect">
+    <div class="button-group1">
+        <input type="button" class="dimen" value="0">
+        <button type="button" class="btn btn-dark frame1">Cancel frame </button>
+        <div class="btn btn-dark" id="outer"><input style="padding-right: 5px;" type="number" value=0 class="wid" id="thickness">Frame Thickness</div>
+        <div class="btn btn-dark" id="inner"><input style="padding-right: 5px;" type="number" value=30 class="wid" id="innerthick">innerFrame</div>
+        <button type="button" class="btn btn-dark inpat" value="1"> innerframes </button>
+    
+        <div class="innerframe-group">
+            <input type="color" id="ip6"  class="innerpattern" name="favcolor" value="#e8e8e8">
+         <img src="../frames/1/icon.jpg"  class="innerpattern" id="ip1">
+         <img src="../frames/2/icon.jpg"  class="innerpattern" id="ip2"> 
+         <img src="../frames/3/icon.jpg"  class="innerpattern" id="ip3"> 
+         <img src="../frames/4/icon.jpg"  class="innerpattern" id="ip4"> 
+         <img src="../frames/5/icon.jpg"  class="innerpattern" id="ip5"> 
+        
+        </div>
+        
+    </div>
+
+     <div class="button-group2">
+
+        <select name="cars" class="select select1">
+            <option value="paint" selected>paint</option>
+            <option value="print">print</option>
+        </select>
+
+         <div class="btn btn-dark"><input  type="number" id="wd" value="0" class="wid">W</div>
+         <button type="button" class="btn btn-dark frame2" value="1"> frames </button>
+         <div class="frame-group">
+          <img src="../frames/1/top.jpg"  class="pattern" id="p1">
+          <img src="../frames/2/top.jpg"  class="pattern" id="p2"> 
+          <img src="../frames/3/top.jpg"  class="pattern" id="p3"> 
+          <img src="../frames/4/top.jpg"  class="pattern" id="p4"> 
+          <img src="../frames/5/top.jpg"  class="pattern" id="p5"> 
+          <!-- <img src="../frames/6/top.jpg"  class="pattern" id="p6">  -->
+         </div>
+         <button type="button" class="btn btn-dark link">Linked </button>
+        <div class="btn btn-dark"><input type="number" id="hd" value="0" class="high">H </div>
+         <select name="cars" class="select select2">
+            <option value="cm" selected>cm</option>
+            <option value="in">in</option>
+        </select>
+      </div>
+     </div>
+
+ <!-- The Modal 
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+
+        <div class="modal-header">
+          <h4 class="modal-title">input dimensions</h4>
+        </div>
+  
+   
+        <div class="modal-body">
+          <input class="form-control" type="number" id="OriginWidth" placeholder="width    cm">
+          <input class="form-control" type="number" id="OriginHeight" placeholder="Height    cm">
+          <div class="validation" style="color:red">input number correctly!</div>
+        </div>
+  
+ 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success check">ok</button>
+          <div class="dismiss" data-bs-dismiss="modal"></div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+-->
+
+        <!-- js -->
+
+    <script src="../global-js/js/fabric.min.js"></script>
+    <script src="../global-js/js/jquery.min.js"></script>
+    <script type="module" src="https://cdn.skypack.dev/vanilla-colorful"></script>
+
+    <script>
+      // frame thickness
+      
+
+        var thickFrame =40;
+        var innerthickFrame = 30;
+
+      // artWorkProperties
+
+        var artWorkTop = '';
+        var artWorkLeft = '';
+        var artWorkWidth = '';
+        var artWorkHeight = '';
+
+      // flags
+
+        var frameFlag = 1;
+        var dimensFlag = 0;
+        var lockFlag = 0;
+        var printFlag = 0;
+
+        //frame sorce url
+        var frameUrl = 1;
+        var innerframeUrl = 1;
+
+        //artwork Url
+
+        var artWorkUrl = "";
+        
+        //data of artWork
+        var n=0;
+        var url = [];
+
+        // Initialize width and height of image
+        const config = {
+            width: 1412,
+            height: 2000
+        }
+        var finish = document.getElementsByClassName("canvas-wrap");
+   
+        // Initiate loading screen
+        $(window).on('load', function(){
+            $(".loader").fadeOut(700);
+            $("#canvas-container").fadeIn(700);
+        })
+
+        // Initiate canvas variables
+        const canvas = new fabric.Canvas('canvas', {
+            preserveObjectStacking: true, 
+            selection: false,
+            height: config.height,
+            width: config.width
+        });
+        var roomStructure = "test-Canvy 2/khung-đồ cố định/khung-đồ cố định.png"
+        var roomShadow = "test-Canvy 2/tường/tường chính/px 2.png"
+        // var roomReflection = "E:/Project 2 - Artlyss/Artlyss Code/room3/img/R0003/M00050/O0000050/T0003-R0003-L01-M00050-O0000050-3.png"
+        
+        // Create Selectable Components
+        var wallColor = new fabric.Rect({
+            id: "wall",
+            width: config.width,
+            height: config.height,
+            fill: '#e8e8e8',
+            hasControls: false,
+            strokeWidth:1,
+            borderScaleFactor:3,
+            borderColor:'lightblue',
+            lockMovementX: true,
+            lockMovementY: true,
+            hasControls: false,
+            });
+        canvas.insertAt(wallColor, 0);
+
+        fabric.Image.fromURL(roomShadow, function(img){
+            img.hasControls = false;
+            img.scaleToWidth(config.width);
+            img.borderScaleFactor = 3;
+            img.borderColor = "lightblue";
+            img.lockMovementX = true;
+            img.lockMovementY = true;
+            img.selectable = false;
+            img.evented = false;
+            canvas.insertAt(img, 1);
+
+        })
+
+        fabric.Image.fromURL(roomStructure, function(img){
+            img.hasControls = false;
+            img.scaleToWidth(config.width);
+            img.borderScaleFactor = 3;
+            img.borderColor = "lightblue";
+            img.lockMovementX = true;
+            img.lockMovementY = true;
+            img.evented = false;
+            img.selectable = false;
+            canvas.insertAt(img, 3);
+
+        })
+
+        fabric.Image.fromURL('../global-img/Art.png', function(img){
+            img.hasControls = false;
+            img.setControlsVisibility({
+            ml: false,
+            mb: false,
+            mr: false,
+            mt: false,
+            mtr: false,
+            tr: false,
+            })
+            img.id = "placeholder";
+
+            if (config.height > config.width){
+                artWorkWidth = img.scaleToWidth(config.width * 0.3);
+                img.top = config.height * 0.2;
+                img.left = config.width * 0.3;
+            } else{
+                artWorkWidth = img.scaleToWidth(config.width * 0.3);
+                img.top = config.height * 0.1;
+                img.left = config.width * 0.5;
+            }
+
+            img.borderScaleFactor = 1;
+            img.borderWidth = 1;
+            // img.borderColor = "orange";
+            img.shadow =  new fabric.Shadow({
+                color: 'rgba(0,0,0,0.3)',
+                blur: 10,
+                offsetX: -15,
+                offsetY: 15,
+                nonScaling: true
+            })
+            img.on('mousedblclick', function(e){
+                addArtwork();
+            })
+            canvas.insertAt(img, 1);
+
+        })
+            // Render All Elements
+        canvas.renderAll();
+
+        // Other functions
+        function HandleElement() {
+            var ao = canvas.getActiveObject();
+            switch(ao.id){
+                case "wall":
+                    changeWallColor(ao);
+                    break;
+                case "groupArtwork":
+                    artworkClicked(ao);
+                break;
+                default:
+                    break;
+            }
+        }
+
+        canvas.on({
+            'selection:updated': HandleElement,
+            'selection:created': HandleElement
+        });
+
+        // Color Picker code
+
+        function changeWallColor(object){
+
+            document.getElementById("menuGroup-left-wall").style.display = "flex";
+            var interval = setInterval(() => {
+                var picker = document.getElementById("vcolorful");
+                object.set("fill", picker.color);
+                canvas.renderAll();
+            }, 20)
+
+            object.on('deselected', function (options){
+                clearInterval(interval);
+                document.getElementById("menuGroup-left-wall").style.display = "none";
+            })
+        }
+
+        function artworkClicked(object){
+     
+            var length = object._objects.length;
+            if(length == 5){
+                $(".select1").val("paint");
+                printFlag = 0;
+                $("#inner").css("display","none");
+                $("#outer").css("display","inline");
+                thickFrame = object._objects[1].height;
+                artWorkHeight =  object._objects[0].height * object._objects[0].scaleY;
+                artWorkWidth = object._objects[0].width * object._objects[0].scaleX;
+                   var f = "p" + object._objects[1].id;
+                   $(".pattern").css("borderWidth","1px");
+                   $("#"+f).css("borderWidth","5px");
+
+            }
+            else if(length == 6){
+                $(".select1").val("print");
+                frameFlag =1;
+                $("#inner").css("display","inline");
+                $("#outer").css("display","none");
+                innerthickFrame = (object._objects[0].width * object._objects[0].scaleX-object._objects[1].width * object._objects[1].scaleX)/2;
+                thickFrame = object._objects[2].height;
+                artWorkHeight =  object._objects[1].height * object._objects[1].scaleY;
+                artWorkWidth = object._objects[1].width * object._objects[1].scaleX;
+                var f = "p" + object._objects[2].id;
+                   $(".pattern").css("borderWidth","1px");
+                   $("#"+f).css("borderWidth","5px");
+
+                 var inf = "ip" +  object._objects[0].id;
+                 $(".innerpattern").css("borderWidth","1px");
+                   $("#"+inf).css("borderWidth","5px");
+            }
+            artWorkLeft = object.left;
+            artWorkTop =  object.top;
+                 
+             object.on("moving",()=>{
+                artWorkLeft = object.left;
+                artWorkTop =  object.top;
+             })
+
+            if(dimensFlag==0) {
+                $("#wd").val(artWorkWidth);
+                $("#hd").val(artWorkHeight);
+                $("#thickness").val(thickFrame);
+                if(length == 6)
+                {$("#innerthick").val(innerthickFrame);}
+                $(".dimen").val(parseInt(artWorkWidth) +"X" + parseInt(artWorkHeight));}
+            else {
+                $("#wd").val(artWorkWidth/2.54);
+                $("#hd").val(artWorkHeight/2.54);
+                $("#thickness").val(thickFrame/2.54);
+                $(".dimen").val(parseInt(artWorkWidth/2.54) +"X" + parseInt(artWorkHeight/2.54));
+                if(length == 6)
+                {$("#innerthick").val(innerthickFrame/2.54);}
+            }
+
+            document.getElementById("menuGroup-left-artwork").style.display = "block";
+            $(".objectselect").css("display", "block");       
+            object.on('deselected', function (options){
+            document.getElementById("menuGroup-left-artwork").style.display = "none";
+            $(".objectselect").css("display", "none"); 
+            })
+
+        }
+
+        // Resize canvas
+        function resizeCanvas(){
+                var optimal_dimensions = [config.width,config.height];
+                var scaleFactorX=window.innerWidth/optimal_dimensions[0];
+                var scaleFactorY=window.innerHeight/optimal_dimensions[1];
+                if(scaleFactorX <  scaleFactorY && scaleFactorX < 1) {
+                    canvas.setWidth(optimal_dimensions[0] *scaleFactorX);
+                    canvas.setHeight(optimal_dimensions[1] *scaleFactorX);
+                    canvas.setZoom(scaleFactorX);
+                } else if(scaleFactorX >  scaleFactorY && scaleFactorY < 1){
+                    canvas.setWidth(optimal_dimensions[0] *scaleFactorY);
+                    canvas.setHeight(optimal_dimensions[1] *scaleFactorY);
+                    canvas.setZoom(scaleFactorY);
+                }else {
+                    canvas.setWidth(optimal_dimensions[0] );
+                    canvas.setHeight(optimal_dimensions[1] );
+                    canvas.setZoom(1);
+                }
+                canvas.renderAll();
+        }
+        $(window).resize(resizeCanvas)
+        resizeCanvas()
+
+  </script>
+  <script src="../global-js/js/script.js"></script>
+  <script src="../global-js/js/newscript.js"></script>
+ </body>
+</html>
